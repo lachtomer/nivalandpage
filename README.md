@@ -9,7 +9,15 @@ Hebrew RTL welcome landing page — **איפור תרפי · Makeup Therapy** (M
 **Stack:** `index.html` + Tailwind CDN + `assets/images/`  
 (Legacy `css/style.css` = old red theme, unused.)
 
-**Next:** Formspree → deploy. See **[docs/NEXT-STEPS.md](docs/NEXT-STEPS.md)**.
+**Next:** GitHub → Vercel — see **[docs/DEPLOY.md](docs/DEPLOY.md)**. Formspree when ready.
+
+### Manage & deploy
+
+```powershell
+git add .
+git commit -m "Your change description"
+git push   # after GitHub connected — Vercel auto-redeploys
+```
 
 ### Preview locally
 
