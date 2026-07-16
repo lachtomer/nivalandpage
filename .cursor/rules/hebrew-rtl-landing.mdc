@@ -1,54 +1,55 @@
 ---
-description: Hebrew RTL landing page conventions for the Niva project (איפור תרפי)
-globs: "**/*.{html,css,js,tsx,jsx}"
+description: Hebrew RTL landing page — איפור תרפי production repo (Niva)
+globs: "**/*.{html,css,js,tsx,jsx,md}"
 alwaysApply: false
 ---
 
-# Niva — Hebrew RTL landing page
+# Niva — production landing page
 
-## Layout
+## Architecture
 
-- Always set `lang="he"` and `dir="rtl"` on `<html>`.
-- Use **logical** spacing (padding-inline, margin-inline) — avoid hard-coded `left`/`right` unless intentional (e.g. phone FAB on visual left).
-- Text alignment: default RTL; center only for section titles and dark-banner intro.
-- Mobile-first breakpoints; test at 375px width.
+- **Production:** `index.html` → GitHub `lachtomer/nivalandpage` → Vercel
+- **Design lab (optional):** [Open Design](https://github.com/nexu-io/open-design) — see `docs/OPEN-DESIGN-WORKFLOW.md`
+- **Never** merge open-design monorepo into this project
 
-## Design tokens (from docs/design/DESIGN.md)
+## Brand contract
+
+Read **`DESIGN.md`** (repo root) before visual changes.
 
 | Token | Value |
 |-------|--------|
-| Primary red | `#D32F2F` |
-| Dark section | `#1A1A1A` |
-| Body text | `#444444` |
-| Font | Heebo (Google Fonts) |
+| Primary | `#7c5454` |
+| Secondary | `#8c4b55` |
+| Surface | `#fff7fa` |
+| On-surface | `#271528` |
+| On-surface-variant | `#504444` |
+| Fonts | Hanken Grotesk (display), Manrope (body) |
 
-Do not invent new colors without user approval.
+Legacy red `#D32F2F` Ravpage theme is deprecated.
 
 ## Content
 
-- Brand: **איפור תרפי · Makeup Therapy**
-- Owner name placeholder: `[שם בעלת העמוד]` — replace only when user provides real name.
-- Copy source of truth: `docs/design/content-map.md`
-- Do not rewrite Hebrew marketing copy unless user asks.
+- Brand: **איפור תרפי • Makeup Therapy**
+- Copy source of truth: **`docs/design/content-map.md`** — do not paraphrase
+- RTL: `lang="he"` `dir="rtl"` always
 
-## Stack constraints
+## Stack
 
-- **Static HTML/CSS** for v1 — no Next.js/React unless user explicitly requests migration.
-- No new npm dependencies for a single landing page.
-- Form: Formspree or Netlify Forms — never invent a custom backend without approval.
+- Static **`index.html`** + Tailwind CDN — no React/Next unless user requests migration
+- Form: Formspree / Netlify Forms when connected
+- Images: `assets/images/`
 
-## Sections (in order)
+## Sections (current)
 
-1. Header — logo, nav, phone FAB
-2. Hero `#about`
-3. Dark banner — method / audience
-4. Workshops `#workshops` — 3 cards
-5. Contact `#contact` — name, phone, workshop select
-6. Footer
+1. Header → 2. Hero `#about` → 3. About → 4. Workshops `#workshops` (3 cards) → 5. Contact `#contact` → 6. Footer
 
-## Before marking done
+## Open Design handoff
 
-- [ ] RTL renders correctly
-- [ ] Phone link uses real number when provided
-- [ ] Workshop CTAs link to `#contact`
-- [ ] No lorem ipsum or English placeholder text in user-facing copy
+When porting from Open Design: copy HTML/CSS patterns into `index.html` only; verify RTL checklist in `docs/OPEN-DESIGN-WORKFLOW.md`.
+
+## Before done
+
+- [ ] RTL + mobile (375px)
+- [ ] Copy matches content-map
+- [ ] Workshop CTAs → `#contact`
+- [ ] No preview/lorem text

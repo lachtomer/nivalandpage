@@ -1,49 +1,50 @@
 # Niva
 
-Hebrew RTL welcome landing page — **איפור תרפי · Makeup Therapy** (Makeup Therapy workshops).
+Hebrew RTL landing page — **איפור תרפי • Makeup Therapy** (Makeup Therapy workshops).
+
+**Live repo:** [github.com/lachtomer/nivalandpage](https://github.com/lachtomer/nivalandpage) → Vercel
 
 ## Status
 
-**New design live** — Tailwind MD3 pink theme + your full Hebrew copy.
+Tailwind MD3 blush theme + full Hebrew copy. Form (Formspree) pending.
 
-**Stack:** `index.html` + Tailwind CDN + `assets/images/`  
-(Legacy `css/style.css` = old red theme, unused.)
-
-**Next:** GitHub → Vercel — see **[docs/DEPLOY.md](docs/DEPLOY.md)**. Formspree when ready.
-
-### Manage & deploy
+## Manage & deploy
 
 ```powershell
 git add .
-git commit -m "Your change description"
-git push   # after GitHub connected — Vercel auto-redeploys
+git commit -m "Describe your change"
+git push    # Vercel auto-redeploys
 ```
 
-### Preview locally
-
-```powershell
-cd "c:\Users\TOMERLAC\OneDrive - AMDOCS\Desktop\Niva"
-python -m http.server 8080
-```
-
-Open: http://localhost:8080
+Local preview: `python -m http.server 8080` → http://localhost:8080
 
 ## Documentation
 
 | File | Purpose |
 |------|---------|
-| [**docs/NEXT-STEPS.md**](docs/NEXT-STEPS.md) | **Start here** — phased roadmap |
-| [`docs/design/content-map.md`](docs/design/content-map.md) | Text → section mapping |
-| [`docs/design/DESIGN.md`](docs/design/DESIGN.md) | Colors, typography, components |
-| [`docs/design/reference/hero-and-top-sections.png`](docs/design/reference/hero-and-top-sections.png) | Visual reference |
-| [`.cursor/rules/hebrew-rtl-landing.mdc`](.cursor/rules/hebrew-rtl-landing.mdc) | Cursor rules for this project |
+| **[`DESIGN.md`](DESIGN.md)** | Brand contract (Open Design 9-section schema) |
+| **[`docs/OPEN-DESIGN-WORKFLOW.md`](docs/OPEN-DESIGN-WORKFLOW.md)** | Use Open Design *beside* this repo |
+| [`docs/design/content-map.md`](docs/design/content-map.md) | Hebrew copy → sections |
+| [`docs/DEPLOY.md`](docs/DEPLOY.md) | Vercel + Formspree |
+| [`docs/NEXT-STEPS.md`](docs/NEXT-STEPS.md) | Roadmap |
 
-## Project structure
+## Design tools
+
+| Tool | Role |
+|------|------|
+| **This repo + Cursor** | Production edits & deploy |
+| **[Open Design](https://github.com/nexu-io/open-design)** | Optional — explore layouts, decks, video |
+| Google Stitch | Optional — quick mockups |
+
+Open Design does **not** live in this repo. See `docs/OPEN-DESIGN-WORKFLOW.md`.
+
+## Structure
 
 ```
 Niva/
-├── index.html          ← page
-├── css/style.css       ← styles
-├── assets/images/      ← photos
-└── docs/               ← brief, design, next steps
+├── DESIGN.md           ← brand contract (agents read this first)
+├── index.html          ← production page
+├── assets/images/
+├── docs/
+└── vercel.json
 ```
