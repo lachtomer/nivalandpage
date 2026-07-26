@@ -88,26 +88,23 @@
 </head>
 <body class="font-body text-base overflow-x-hidden">
 
-  <!-- Header — logo left, nav right (איפור תרפי · סדנאות · אודות · יצירת קשר) -->
+  <!-- Header -->
   <header class="sticky top-0 z-50 bg-surface/85 backdrop-blur-md shadow-sm border-b border-outline-variant/20">
-    <div class="flex justify-between items-center w-full px-5 md:px-16 py-4 max-w-[1200px] mx-auto">
-      <!-- First in RTL = right side -->
-      <nav class="hidden md:flex items-center gap-8 text-xs md:text-sm text-on-surface-variant" aria-label="ניווט ראשי">
-        <a class="hover:text-secondary transition-colors" href="#hero">איפור תרפי</a>
-        <a class="hover:text-secondary transition-colors" href="#workshops">סדנאות</a>
-        <a class="hover:text-secondary transition-colors" href="#about">אודות</a>
-        <a class="hover:text-secondary transition-colors" href="#contact">יצירת קשר</a>
-      </nav>
-      <a href="#contact" class="md:hidden text-primary shrink-0" aria-label="יצירת קשר">
-        <span class="material-symbols-outlined">mail</span>
-      </a>
-      <!-- Second in RTL = left side -->
-      <a href="#hero" class="flex items-center gap-2 text-primary shrink-0" dir="ltr">
-        <div class="text-left leading-tight">
-          <span class="font-display font-semibold text-lg md:text-xl block">Makeup Therapy <span aria-hidden="true">▪</span> איפור תרפי</span>
-          <span class="text-xs md:text-sm text-on-surface-variant hidden sm:block" dir="rtl">המקום שבו המברשת פוגשת את הנפש</span>
-        </div>
+    <div class="flex flex-row-reverse justify-between items-center w-full px-5 md:px-16 py-4 max-w-[1200px] mx-auto">
+      <a href="#" class="flex items-center gap-2 text-primary">
         <span class="text-xl" aria-hidden="true">💄</span>
+        <div class="text-right leading-tight">
+          <span class="font-display font-semibold text-lg md:text-xl block">איפור תרפי • Makeup Therapy</span>
+          <span class="text-xs md:text-sm text-on-surface-variant hidden sm:block">המקום שבו המברשת פוגשת את הנפש</span>
+        </div>
+      </a>
+      <nav class="hidden md:flex flex-row-reverse gap-8 text-sm">
+        <a class="text-on-surface-variant hover:text-secondary transition-colors" href="#about">אודות</a>
+        <a class="text-on-surface-variant hover:text-secondary transition-colors" href="#workshops">סדנאות</a>
+        <a class="text-primary font-semibold border-b-2 border-primary pb-0.5" href="#contact">יצירת קשר</a>
+      </nav>
+      <a href="#contact" class="md:hidden text-primary" aria-label="יצירת קשר">
+        <span class="material-symbols-outlined">mail</span>
       </a>
     </div>
   </header>
@@ -115,7 +112,7 @@
   <main>
 
     <!-- Hero -->
-    <section class="relative min-h-[680px] md:min-h-[760px] flex items-center overflow-hidden" id="hero">
+    <section class="relative min-h-[680px] md:min-h-[760px] flex items-center overflow-hidden" id="about">
       <div class="absolute inset-0 z-0">
         <div class="absolute inset-0 bg-gradient-to-l from-surface via-surface/50 to-surface/20 z-10"></div>
         <img src="assets/images/hero-brushes.jpg" alt="" class="w-full h-full object-cover object-center" width="1600" height="900">
@@ -130,10 +127,7 @@
             הגיע הזמן לשנות את הדיאלוג שלך מול המראה.
           </p>
           <p class="text-on-surface-variant text-base md:text-lg leading-relaxed mb-4">
-            איפור הוא לא מסכה שנועדה להסתיר אותך מהעולם, אלא כלי עוצמתי שנועד להאיר את מי שאת כבר. כמטפלת מוסמכת ומאפרת מקצועית, פיתחתי את שיטת "איפור תרפי" (Makeup Therapy) – מפגשים חווייתיים המשלבים בין חמלה עצמית וראייה טובה של עצמך לבין פרקטיקה מעשית, מהירה ובגובה העיניים.
-          </p>
-          <p class="text-on-surface-variant text-base md:text-lg leading-relaxed mb-6">
-            אני מזמינה אותך לקחת פסק זמן, להחזיר את האור לפנים, וללמוד להסתכל לעצמך בעיניים טובות וחומלות יותר.
+            איפור הוא לא מסכה שנועדה להסתיר אותך מהעולם, אלא כלי טיפולי עוצמתי שנועד להאיר את מי שאת כבר.
           </p>
           <a href="#workshops" class="inline-flex items-center gap-2 bg-primary text-on-primary px-8 py-4 rounded-lg font-semibold text-sm active:scale-95 transition-transform shadow-soft">
             בחרי את החוויה המדויקת עבורך
@@ -143,38 +137,24 @@
       </div>
     </section>
 
-    <!-- About me -->
-    <section class="py-16 md:py-24 bg-surface-container-low" id="about">
+    <!-- About / method -->
+    <section class="py-16 md:py-20 bg-surface-container-low">
       <div class="px-5 md:px-16 max-w-[1200px] mx-auto">
         <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-          <div class="space-y-5 text-right order-2 md:order-1">
-            <h2 class="font-display font-semibold text-2xl md:text-3xl text-primary leading-tight">
-              נעים להכיר: מי עומדת מאחורי המברשת?
-            </h2>
-            <blockquote class="border-r-4 border-secondary pr-4 text-lg md:text-xl text-secondary font-display font-medium leading-relaxed italic">
-              "הדרך שבה אנחנו מביטות בעצמנו מול המראה היא לא גזירת גורל – היא יצירה שאפשר לכתוב ולצבוע מחדש."
-            </blockquote>
-            <p class="text-on-surface text-base md:text-lg leading-relaxed">
-              שלום, שמי ניבה.
+          <div class="space-y-6 text-right order-2 md:order-1">
+            <p class="text-lg md:text-xl text-on-surface leading-relaxed">
+              כמטפלת מוסמכת ומאפרת מקצועית, פיתחתי שיטה ייחודית המשלבת בין שיח רגשי וחמלה עצמית לבין פרקטיקה מעשית בגובה העיניים.
             </p>
             <p class="text-on-surface-variant leading-relaxed">
-              אני מטפלת באמנות (בעלת תואר שני M.A) ובמשך שנים רבות פועלת כמאפרת מקצועית בתחומים שונים ומגוונים.
+              אני מזמינה אותך לקחת פסק זמן, להחזיר את האור לפנים, וללמוד להסתכל לעצמך בעיניים טובות יותר.
             </p>
-            <p class="text-on-surface-variant leading-relaxed">
-              במהלך הקריירה שלי, פגשתי אלפי נשים. ראיתי איך פעם אחר פעם, המראה בבוקר הופכת לזירה של ביקורת עצמית נוקשה. נשים רבות משתמשות באיפור כמסכה כדי להסתתר, להסוות ולהחביא את מי שהן.
-            </p>
-            <p class="text-on-surface-variant leading-relaxed">
-              מתוך הרצון לשנות את החוויה הזו, נולד המותג איפור תרפי (Makeup Therapy). הבנתי שהשילוב בין עולם הטיפול הרגשי לעולם האסתטיקה הוא החיבור המדויק ביותר כדי להיטיב את המבט של האישה על עצמה.
-            </p>
-            <p class="text-on-surface-variant leading-relaxed">
-              בקליניקה שלי, אני משתמשת בתהליך היצירה והאיפור ככלי ריפוי חווייתי. כאן לא תמצאי חוקי יופי נוקשים או ניסיונות להפוך אותך למישהי אחרת. המטרה שלי היא להעניק לך מרחב בטוח ומחבק, שבו נלמד יחד להניח את הביקורת בצד, להאיר את החוזקות הייחודיות שלך, ולמצוא את האיזון העדין שבין הפנים לנפש.
-            </p>
-            <p class="text-on-surface font-medium leading-relaxed">
-              אני מזמינה אותך להסתכל לעצמך בעיניים טובות יותר.
-            </p>
+            <div class="flex items-center gap-3 text-primary pt-2">
+              <span class="material-symbols-outlined">auto_awesome</span>
+              <span class="font-semibold text-sm">שיטה המשלבת טיפול רגשי ואיפור מקצועי</span>
+            </div>
           </div>
-          <div class="relative h-[360px] md:h-[520px] rounded-xl overflow-hidden shadow-soft order-1 md:order-2">
-            <img src="assets/images/intro-mirror.jpg" alt="ניבה — איפור תרפי" class="w-full h-full object-cover object-center">
+          <div class="relative h-[320px] md:h-[420px] rounded-xl overflow-hidden shadow-soft order-1 md:order-2">
+            <img src="assets/images/intro-mirror.jpg" alt="אישה מסתכלת במראה בחיוך רך" class="w-full h-full object-cover object-center">
           </div>
         </div>
       </div>
@@ -191,55 +171,7 @@
 
         <div class="grid md:grid-cols-3 gap-6 md:gap-8">
 
-          <!-- Option 1 — private 1:1 -->
-          <article class="glass-card p-7 md:p-8 rounded-xl flex flex-col h-full shadow-soft hover:-translate-y-1 transition-all duration-300">
-            <div class="flex items-center gap-3 mb-5">
-              <span class="text-2xl" aria-hidden="true">🧘‍♀️</span>
-              <div class="w-11 h-11 bg-primary-container/40 text-primary rounded-full flex items-center justify-center shrink-0">
-                <span class="material-symbols-outlined text-xl">person</span>
-              </div>
-            </div>
-            <h3 class="font-display font-semibold text-xl text-secondary mb-1">אפשרות 1: סדנה פרטית לאחת</h3>
-            <p class="text-primary text-sm font-semibold mb-3">(המסע האישי שלך)</p>
-            <p class="text-on-surface-variant text-sm mb-4 leading-relaxed">
-              פסק זמן מוחלט של שעה וחצי (אחד על אחד) המוקדש כולו רק לך.
-            </p>
-            <dl class="workshop-details text-sm flex-grow mb-6">
-              <dt>התהליך</dt>
-              <dd>נשב לשיחה טיפולית אינטימית על המחשבות שמנהלות אותך מול המראה ועל דימוי הגוף שלך. בהמשך, בטכניקת "חצי-חצי" חווייתית, אלמד אותך יד ביד איך להשתמש ב-4 מוצרי חובה בסיסיים כדי למחוק עייפות, להחזיר חיוניות וליצור מראה קורן ב-5 דקות בבוקר.</dd>
-              <dt>התוצאה</dt>
-              <dd>תצאי עם תחושת מסוגלות עצמית גבוהה, כלים פרקטיים המותאמים בדיוק למבנה הפנים שלך, ודף מזכרת טיפולי שילווה את הבקרים שלך באהבה.</dd>
-            </dl>
-            <a href="#contact" class="block text-center bg-primary text-on-primary py-3 rounded-lg font-semibold text-sm active:scale-95 transition-transform shadow-soft">
-              לפרטים ותיאום המפגש האישי שלך
-            </a>
-          </article>
-
-          <!-- Option 2 — mother & daughter -->
-          <article class="glass-card p-7 md:p-8 rounded-xl flex flex-col h-full shadow-soft hover:-translate-y-1 transition-all duration-300 border-secondary/20">
-            <div class="flex items-center gap-3 mb-5">
-              <span class="text-2xl" aria-hidden="true">👩‍👧</span>
-              <div class="w-11 h-11 bg-secondary-container/40 text-secondary rounded-full flex items-center justify-center shrink-0">
-                <span class="material-symbols-outlined text-xl">family_history</span>
-              </div>
-            </div>
-            <h3 class="font-display font-semibold text-xl text-secondary mb-1">אפשרות 2: סדנה זוגית לאם ובת</h3>
-            <p class="text-primary text-sm font-semibold mb-3">(קווים מקבילים)</p>
-            <p class="text-on-surface-variant text-sm mb-4 leading-relaxed">
-              טקס מעבר מקרב ומרגש שבונה דיאלוג בריא מול המראה ומחזק את הקשר הנשי במשפחה.
-            </p>
-            <dl class="workshop-details text-sm flex-grow mb-6">
-              <dt>התהליך</dt>
-              <dd>מפגש זוגי ייחודי (אימא ובת בלבד) שבו נשבור את המסכים והפילטרים המזויפים של הרשתות, ונלמד להחמיא ולהרים אחת לשנייה. נתרגל יחד שגרת טיפוח ומגע רכה, ואיפור עדין, בריא ונכון לגיל של כל אחת מכן (איפור שקוף לנערה, והחזרת אור לעור בוגר עבור האימא).</dd>
-              <dt>התוצאה</dt>
-              <dd>זיכרון משותף ומרגש שייחרט לכן בלב, וכלים מעשיים לבניית דימוי גוף מחבק מגיל צעיר.</dd>
-            </dl>
-            <a href="#contact" class="block text-center bg-secondary text-on-secondary py-3 rounded-lg font-semibold text-sm active:scale-95 transition-transform">
-              לשריין לנו רגע של חיבור זוגי
-            </a>
-          </article>
-
-          <!-- Option 3 — group -->
+          <!-- Option 1 -->
           <article class="glass-card p-7 md:p-8 rounded-xl flex flex-col h-full shadow-soft hover:-translate-y-1 transition-all duration-300">
             <div class="flex items-center gap-3 mb-5">
               <span class="text-2xl" aria-hidden="true">🥂</span>
@@ -247,19 +179,73 @@
                 <span class="material-symbols-outlined text-xl">groups</span>
               </div>
             </div>
-            <h3 class="font-display font-semibold text-xl text-secondary mb-1">אפשרות 3: סדנה קבוצתית</h3>
-            <p class="text-primary text-sm font-semibold mb-3">(במבט טוב)</p>
+            <h3 class="font-display font-semibold text-xl text-secondary mb-1">אפשרות 1: סדנת נשים פרטית</h3>
+            <p class="text-primary text-sm font-semibold mb-3">(אינטימית וחגיגית)</p>
             <p class="text-on-surface-variant text-sm mb-4 leading-relaxed">
-              חוויה נשית מרימה, חגיגית ומלאת אנרגיה לקבוצת חברות או נשים שרוצות לקרון יחד.
+              פסק הזמן המושלם לחברות, ימי הולדת או ערבי נשים משחררים.
             </p>
             <dl class="workshop-details text-sm flex-grow mb-6">
+              <dt>מה מחכה לכן?</dt>
+              <dd>ערב חגיגי של עד 8 משתתפות הכולל יין, נשנושים, מוזיקה ואנרגיה מעולה.</dd>
               <dt>התהליך</dt>
-              <dd>ערב מפנק של עד 8 משתתפות הכולל יין, נשנושים ומוזיקה טובה. נפתח במעגל שיח מעצים וקלפי השראה, ולאחר מכן נעבור לתרגול אקטיבי חצי-חצי שבו כל אחת פותחת את תיק האיפור שלה מהבית. נלמד את חוקי ה"מינימום מאמץ, מקסימום אימפקט" – איך להאיר את החוזקות שלכן במקום להחביא פגמים.</dd>
+              <dd>נפתח במעגל שיח מעצים וקלפי השראה על דימוי גוף וביטחון עצמי. בהמשך, אלמד אתכן שלב אחר שלב (בשיטת חצי-חצי) טכניקות איפור קלילות שירימו לכן את האנרגיה והזוהר בכל בוקר מחדש.</dd>
               <dt>התוצאה</dt>
-              <dd>ערב משחרר מלא בצחוק, חיבור נשי עמוק, וטכניקות חכמות שישנו את הדרך שבה כולכן תביטו בעצמכן מחר בבוקר.</dd>
+              <dd>ערב מלא בצחוק, חיבור וכלים פרקטיים שיישארו איתכן לתמיד.</dd>
+            </dl>
+            <a href="#contact" class="block text-center bg-primary text-on-primary py-3 rounded-lg font-semibold text-sm active:scale-95 transition-transform shadow-soft">
+              לפרטים ותיאום הסדנה
+            </a>
+          </article>
+
+          <!-- Option 2 -->
+          <article class="glass-card p-7 md:p-8 rounded-xl flex flex-col h-full shadow-soft hover:-translate-y-1 transition-all duration-300 border-secondary/20">
+            <div class="flex items-center gap-3 mb-5">
+              <span class="text-2xl" aria-hidden="true">🏢</span>
+              <div class="w-11 h-11 bg-secondary-container/40 text-secondary rounded-full flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-xl">business_center</span>
+              </div>
+            </div>
+            <h3 class="font-display font-semibold text-xl text-secondary mb-1">אפשרות 2: סדנה לחברות וארגונים</h3>
+            <p class="text-primary text-sm font-semibold mb-3">(Well-being לעובדות)</p>
+            <p class="text-on-surface-variant text-sm mb-4 leading-relaxed">
+              פעילות גיבוש יוקרתית ומקורית להפחתת שחיקה וחיזוק הנוכחות העסקית.
+            </p>
+            <dl class="workshop-details text-sm flex-grow mb-6">
+              <dt>למי זה מתאים?</dt>
+              <dd>ימי חברה, ערבי צוות, הרמות כוסית או פעילויות מחלקתיות למשאבי אנוש ורווחה.</dd>
+              <dt>התהליך</dt>
+              <dd>סדנה בת שעתיים וחצי המשלבת כלים פסיכולוגיים להתמודדות עם סטרס בעבודה וחיזוק הביטחון העצמי, יחד עם הדרכת איפור מעשית ומקצועית המותאמת לבוקר עמוס של מנהלות ועובדות (איך להיראות חיונית ב-5 דקות).</dd>
+              <dt>התוצאה</dt>
+              <dd>צוות עובדות מגובש, מורם, בעל תחושת מסוגלות גבוהה ונוכחות ניהולית מנצחת.</dd>
+            </dl>
+            <a href="#contact" class="block text-center bg-secondary text-on-secondary py-3 rounded-lg font-semibold text-sm active:scale-95 transition-transform">
+              לקבלת הצעת מחיר מותאמת לארגון
+            </a>
+          </article>
+
+          <!-- Option 3 -->
+          <article class="glass-card p-7 md:p-8 rounded-xl flex flex-col h-full shadow-soft hover:-translate-y-1 transition-all duration-300">
+            <div class="flex items-center gap-3 mb-5">
+              <span class="text-2xl" aria-hidden="true">👩‍👧</span>
+              <div class="w-11 h-11 bg-primary-container/40 text-primary rounded-full flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-xl">family_history</span>
+              </div>
+            </div>
+            <h3 class="font-display font-semibold text-xl text-secondary mb-1">אפשרות 3: סדנת "אם ובת"</h3>
+            <p class="text-primary text-sm font-semibold mb-3">(חיבור חווייתי ומרגש)</p>
+            <p class="text-on-surface-variant text-sm mb-4 leading-relaxed">
+              טקס מעבר רך ומקרב שבונה דיאלוג בריא מול המראה מגיל צעיר.
+            </p>
+            <dl class="workshop-details text-sm flex-grow mb-6">
+              <dt>למי זה מתאים?</dt>
+              <dd>אימהות ובנות (נערות או בוגרות) שרוצות לחגוג אירוע מיוחד (בת מצווה, גיוס, או סתם יום כיף).</dd>
+              <dt>התהליך</dt>
+              <dd>מפגש אינטימי ומרגש שבו נדבר על המעבר מילדות לנשיות, על הלחץ החברתי של הרשתות, ואיך להשתמש באיפור בצורה בריאה – לא כדי להשתנות, אלא כדי להביע את עצמך. נתרגל יחד איפור עדין, מחמיא ונכון לגילכן.</dd>
+              <dt>התוצאה</dt>
+              <dd>זיכרון משותף ומרגש, וכלים לבניית דימוי גוף חיובי ומחבק.</dd>
             </dl>
             <a href="#contact" class="block text-center border-2 border-primary text-primary py-3 rounded-lg font-semibold text-sm hover:bg-primary/5 active:scale-95 transition-all">
-              לשמירת מקום בסדנה הקרובה
+              לשריין לנו רגע של חיבור
             </a>
           </article>
 
@@ -276,10 +262,10 @@
           </div>
           <div class="p-8 md:p-12 lg:p-16">
             <p class="text-on-surface-variant leading-relaxed mb-3">
-              המקומות בכל מפגש וסדנה מוגבלים כדי לשמור על מרחב בטוח, דיסקרטי ואישי.
+              המקומות בכל סדנה מוגבלים כדי לשמור על מרחב אישי ובטוח.
             </p>
             <p class="text-on-surface font-medium leading-relaxed mb-8">
-              השאירי פרטים כאן, ונחזור אלייך בוואטסאפ להתאמת החוויה המושלמת עבורך:
+              השאירי פרטים כאן, ונחזור אלייך להתאמת הסדנה המושלמת עבורך:
             </p>
             <form class="space-y-5" action="#" method="post" onsubmit="event.preventDefault(); alert('הטופס עדיין לא מחובר — נחבר בשלב הבא.');">
               <div>
@@ -287,16 +273,16 @@
                 <input class="w-full bg-surface-container border border-outline-variant/50 focus:border-primary focus:ring-primary/20 rounded-lg p-3" id="name" name="name" type="text" placeholder="שם מלא" required>
               </div>
               <div>
-                <label class="block font-semibold text-sm text-on-surface mb-2" for="phone">מספר טלפון (וואטסאפ)</label>
+                <label class="block font-semibold text-sm text-on-surface mb-2" for="phone">מספר טלפון</label>
                 <input class="w-full bg-surface-container border border-outline-variant/50 focus:border-primary focus:ring-primary/20 rounded-lg p-3" id="phone" name="phone" type="tel" placeholder="050-0000000" required>
               </div>
               <div>
-                <label class="block font-semibold text-sm text-on-surface mb-2" for="workshop">איזה מסלול הכי מעניין אותך?</label>
+                <label class="block font-semibold text-sm text-on-surface mb-2" for="workshop">איזה סדנה מעניינת אותך?</label>
                 <select class="w-full bg-surface-container border border-outline-variant/50 focus:border-primary focus:ring-primary/20 rounded-lg p-3" id="workshop" name="workshop" required>
-                  <option value="" disabled selected>בחרי מסלול</option>
-                  <option value="private">סדנה פרטית לאחת</option>
-                  <option value="mother-daughter">סדנה זוגית (אם ובת)</option>
-                  <option value="group">סדנה קבוצתית</option>
+                  <option value="" disabled selected>בחרי סדנה</option>
+                  <option value="women">סדנת נשים</option>
+                  <option value="corporate">חברות וארגונים</option>
+                  <option value="mother-daughter">אם ובת</option>
                 </select>
               </div>
               <button class="w-full bg-primary text-on-primary py-4 rounded-lg font-display font-semibold active:scale-95 transition-transform shadow-soft mt-2" type="submit">
@@ -309,6 +295,21 @@
     </section>
 
   </main>
+
+  <footer class="bg-surface-container-high border-t border-outline-variant/20">
+    <div class="flex flex-col md:flex-row-reverse items-center justify-between gap-6 w-full px-5 md:px-16 py-8 max-w-[1200px] mx-auto">
+      <div class="flex items-center gap-2 text-secondary">
+        <span class="text-lg" aria-hidden="true">💄</span>
+        <span class="font-display font-semibold">איפור תרפי • Makeup Therapy</span>
+      </div>
+      <div class="flex flex-wrap justify-center gap-6 text-sm">
+        <a class="text-on-surface-variant hover:text-primary transition-colors" href="#about">אודות</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors" href="#workshops">סדנאות</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors" href="#contact">יצירת קשר</a>
+      </div>
+      <p class="text-sm text-on-surface-variant/80">© 2026 איפור תרפי — כל הזכויות שמורות</p>
+    </div>
+  </footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {

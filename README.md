@@ -27,6 +27,7 @@ Local preview: `python -m http.server 8080` → http://localhost:8080
 | [`docs/design/content-map.md`](docs/design/content-map.md) | Hebrew copy → sections |
 | [`docs/DEPLOY.md`](docs/DEPLOY.md) | Vercel + Formspree |
 | [`docs/NEXT-STEPS.md`](docs/NEXT-STEPS.md) | Roadmap |
+| [`.cursor/rules/audience-brand-fit-review.mdc`](.cursor/rules/audience-brand-fit-review.mdc) | Audience review agent (beauty × psychology) |
 
 ## Design tools
 
