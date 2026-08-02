@@ -333,49 +333,44 @@
     <!-- Contact -->
     <section class="py-16 md:py-24 bg-surface-container-highest" id="contact">
       <div class="px-5 md:px-16 max-w-[1200px] mx-auto">
-        <div class="grid md:grid-cols-2 gap-0 items-stretch bg-surface rounded-3xl overflow-hidden shadow-soft">
-          <div class="hidden md:block min-h-[480px] relative">
-            <img src="assets/images/workshop-group.png" alt="קבוצת נשים בסדנה" class="absolute inset-0 w-full h-full object-cover object-center">
-          </div>
-          <div class="p-8 md:p-12 lg:p-16">
-            <p class="text-on-surface-variant leading-relaxed mb-3">
-              המקומות בכל מפגש וסדנה מוגבלים כדי לשמור על מרחב בטוח, דיסקרטי ואישי.
-            </p>
-            <p class="text-on-surface font-medium leading-relaxed mb-8">
-              השאירי פרטים כאן, ונחזור אלייך בוואטסאפ להתאמת החוויה המושלמת עבורך:
-            </p>
-            <form id="contact-form" class="space-y-5" action="https://api.web3forms.com/submit" method="POST">
-              <input type="hidden" name="access_key" value="153f8648-bace-41da-855a-8ae4b031c231">
-              <input type="hidden" name="subject" value="פנייה חדשה מהאתר — איפור תרפי">
-              <input type="hidden" name="from_name" value="איפור תרפי">
-              <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
-              <div>
-                <label class="block font-semibold text-sm text-on-surface mb-2" for="name">שם מלא</label>
-                <input class="w-full bg-surface-container border border-outline-variant/50 focus:border-primary focus:ring-primary/20 rounded-lg p-3" id="name" name="name" type="text" placeholder="שם מלא" required minlength="2" autocomplete="name">
-              </div>
-              <div>
-                <label class="block font-semibold text-sm text-on-surface mb-2" for="phone">מספר טלפון (וואטסאפ)</label>
-                <input class="w-full bg-surface-container border border-outline-variant/50 focus:border-primary focus:ring-primary/20 rounded-lg p-3" id="phone" name="phone" type="tel" placeholder="050-0000000" required autocomplete="tel" inputmode="tel" title="מספר ישראלי, למשל 050-1234567 או +972501234567">
-              </div>
-              <div>
-                <label class="block font-semibold text-sm text-on-surface mb-2" for="email">אימייל</label>
-                <input class="w-full bg-surface-container border border-outline-variant/50 focus:border-primary focus:ring-primary/20 rounded-lg p-3" id="email" name="email" type="email" placeholder="name@example.com" required autocomplete="email" inputmode="email" dir="ltr" title="כתובת אימייל תקינה, למשל name@example.com">
-              </div>
-              <div>
-                <label class="block font-semibold text-sm text-on-surface mb-2" for="workshop">איזה מסלול הכי מעניין אותך?</label>
-                <select class="w-full bg-surface-container border border-outline-variant/50 focus:border-primary focus:ring-primary/20 rounded-lg p-3" id="workshop" name="workshop" required>
-                  <option value="" disabled selected hidden>בחרי מסלול</option>
-                  <option value="סדנה פרטית לאחת">1. סדנה פרטית לאחת</option>
-                  <option value="סדנה זוגית (אם ובת)">2. סדנה זוגית (אם ובת)</option>
-                  <option value="סדנה קבוצתית">3. סדנה קבוצתית</option>
-                </select>
-              </div>
-              <button id="contact-submit" class="w-full bg-primary text-on-primary py-4 rounded-lg font-display font-semibold active:scale-95 transition-transform shadow-soft mt-2" type="submit">
-                שלחי לי פרטים ונתאם!
-              </button>
-              <p id="contact-result" class="text-sm text-center min-h-[1.25rem]" role="status" aria-live="polite"></p>
-            </form>
-          </div>
+        <div class="max-w-xl mx-auto bg-surface rounded-3xl overflow-hidden shadow-soft p-8 md:p-12 lg:p-16">
+          <p class="text-on-surface-variant leading-relaxed mb-3">
+            המקומות בכל מפגש וסדנה מוגבלים כדי לשמור על מרחב בטוח, דיסקרטי ואישי.
+          </p>
+          <p class="text-on-surface font-medium leading-relaxed mb-8">
+            השאירי פרטים כאן, ונחזור אלייך בוואטסאפ להתאמת החוויה המושלמת עבורך:
+          </p>
+          <form id="contact-form" class="space-y-5" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="153f8648-bace-41da-855a-8ae4b031c231">
+            <input type="hidden" name="subject" value="פנייה חדשה מהאתר — איפור תרפי">
+            <input type="hidden" name="from_name" value="איפור תרפי">
+            <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <div>
+              <label class="block font-semibold text-sm text-on-surface mb-2" for="name">שם מלא</label>
+              <input class="w-full bg-surface-container border border-outline-variant/50 focus:border-primary focus:ring-primary/20 rounded-lg p-3" id="name" name="name" type="text" placeholder="שם מלא" required minlength="2" autocomplete="name">
+            </div>
+            <div>
+              <label class="block font-semibold text-sm text-on-surface mb-2" for="phone">מספר טלפון (וואטסאפ)</label>
+              <input class="w-full bg-surface-container border border-outline-variant/50 focus:border-primary focus:ring-primary/20 rounded-lg p-3" id="phone" name="phone" type="tel" placeholder="050-0000000" required autocomplete="tel" inputmode="tel" title="מספר ישראלי, למשל 050-1234567 או +972501234567">
+            </div>
+            <div>
+              <label class="block font-semibold text-sm text-on-surface mb-2" for="email">אימייל</label>
+              <input class="w-full bg-surface-container border border-outline-variant/50 focus:border-primary focus:ring-primary/20 rounded-lg p-3" id="email" name="email" type="email" placeholder="name@example.com" required autocomplete="email" inputmode="email" dir="ltr" title="כתובת אימייל תקינה, למשל name@example.com">
+            </div>
+            <div>
+              <label class="block font-semibold text-sm text-on-surface mb-2" for="workshop">איזה מסלול הכי מעניין אותך?</label>
+              <select class="w-full bg-surface-container border border-outline-variant/50 focus:border-primary focus:ring-primary/20 rounded-lg p-3" id="workshop" name="workshop" required>
+                <option value="" disabled selected hidden>בחרי מסלול</option>
+                <option value="סדנה פרטית לאחת">1. סדנה פרטית לאחת</option>
+                <option value="סדנה זוגית (אם ובת)">2. סדנה זוגית (אם ובת)</option>
+                <option value="סדנה קבוצתית">3. סדנה קבוצתית</option>
+              </select>
+            </div>
+            <button id="contact-submit" class="w-full bg-primary text-on-primary py-4 rounded-lg font-display font-semibold active:scale-95 transition-transform shadow-soft mt-2" type="submit">
+              שלחי לי פרטים ונתאם!
+            </button>
+            <p id="contact-result" class="text-sm text-center min-h-[1.25rem]" role="status" aria-live="polite"></p>
+          </form>
         </div>
       </div>
     </section>
