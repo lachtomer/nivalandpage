@@ -332,11 +332,11 @@
               </div>
               <div>
                 <label class="block font-semibold text-sm text-on-surface mb-2" for="phone">מספר טלפון (וואטסאפ)</label>
-                <input class="w-full bg-surface-container border border-outline-variant/50 focus:border-primary focus:ring-primary/20 rounded-lg p-3" id="phone" name="phone" type="tel" placeholder="050-0000000" required autocomplete="tel" inputmode="tel" pattern="[\d\-\s()]{9,15}" title="נא להזין מספר טלפון תקין">
+                <input class="w-full bg-surface-container border border-outline-variant/50 focus:border-primary focus:ring-primary/20 rounded-lg p-3" id="phone" name="phone" type="tel" placeholder="050-0000000" required autocomplete="tel" inputmode="tel" title="מספר ישראלי, למשל 050-1234567 או +972501234567">
               </div>
               <div>
                 <label class="block font-semibold text-sm text-on-surface mb-2" for="email">אימייל</label>
-                <input class="w-full bg-surface-container border border-outline-variant/50 focus:border-primary focus:ring-primary/20 rounded-lg p-3" id="email" name="email" type="email" placeholder="name@example.com" required autocomplete="email" inputmode="email" dir="ltr">
+                <input class="w-full bg-surface-container border border-outline-variant/50 focus:border-primary focus:ring-primary/20 rounded-lg p-3" id="email" name="email" type="email" placeholder="name@example.com" required autocomplete="email" inputmode="email" dir="ltr" title="כתובת אימייל תקינה, למשל name@example.com">
               </div>
               <div>
                 <label class="block font-semibold text-sm text-on-surface mb-2" for="workshop">איזה מסלול הכי מעניין אותך?</label>
@@ -384,6 +384,38 @@
         const emailInput = form.querySelector('#email');
         const workshopSelect = form.querySelector('#workshop');
 
+        /** Normalize to local Israeli digits (leading 0). */
+        const normalizeIsraeliPhone = (raw) => {
+          let digits = String(raw || '').replace(/\D/g, '');
+          if (digits.startsWith('972')) {
+            digits = digits.slice(3);
+            if (!digits.startsWith('0')) digits = '0' + digits;
+          }
+          return digits;
+        };
+
+        /** Mobile 05X… or landline 02/03/04/08/09/07X… */
+        const isValidIsraeliPhone = (raw) => {
+          const d = normalizeIsraeliPhone(raw);
+          if (/^05\d{8}$/.test(d)) return true;           // mobile
+          if (/^0[2-489]\d{7}$/.test(d)) return true;     // 02,03,04,08,09
+          if (/^07[2-9]\d{7}$/.test(d)) return true;      // 072–079
+          return false;
+        };
+
+        const isValidEmailFormat = (raw) => {
+          const email = String(raw || '').trim();
+          if (!email || email.length > 254) return false;
+          // Practical format: local@domain.tld (blocks spaces, double dots, trailing dots)
+          const re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+          if (!re.test(email)) return false;
+          const [local, domain] = email.split('@');
+          if (!local || !domain) return false;
+          if (local.startsWith('.') || local.endsWith('.') || local.includes('..')) return false;
+          if (domain.startsWith('-') || domain.endsWith('-') || domain.includes('..')) return false;
+          return true;
+        };
+
         const validateContactForm = () => {
           const name = (nameInput?.value || '').trim();
           const phone = (phoneInput?.value || '').trim();
@@ -396,14 +428,14 @@
             nameInput?.focus();
             return false;
           }
-          if (!phone || phone.replace(/\D/g, '').length < 9) {
-            result.textContent = 'נא למלא מספר טלפון תקין.';
+          if (!isValidIsraeliPhone(phone)) {
+            result.textContent = 'נא להזין מספר טלפון ישראלי תקין (למשל 050-1234567).';
             result.className = 'text-sm text-center min-h-[1.25rem] text-red-700';
             phoneInput?.focus();
             return false;
           }
-          if (!email || !emailInput.checkValidity()) {
-            result.textContent = 'נא למלא כתובת אימייל תקינה.';
+          if (!isValidEmailFormat(email)) {
+            result.textContent = 'נא להזין כתובת אימייל תקינה (למשל name@example.com).';
             result.className = 'text-sm text-center min-h-[1.25rem] text-red-700';
             emailInput?.focus();
             return false;
@@ -431,8 +463,8 @@
             subject: 'New lead from Makeup Therapy website',
             from_name: 'Makeup Therapy',
             name: (nameInput.value || '').trim(),
-            phone: (phoneInput.value || '').trim(),
-            email: (emailInput.value || '').trim(),
+            phone: normalizeIsraeliPhone(phoneInput.value),
+            email: (emailInput.value || '').trim().toLowerCase(),
             workshop: workshopSelect.value,
             botcheck: false,
           };
