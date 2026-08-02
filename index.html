@@ -72,12 +72,20 @@
           fontFamily: {
             display: ["Hanken Grotesk", "sans-serif"],
             body: ["Manrope", "sans-serif"],
+            brand: ["Gveret Levin", "cursive"],
           },
         },
       },
     };
   </script>
   <style>
+    @font-face {
+      font-family: "Gveret Levin";
+      src: url("assets/fonts/GveretLevin-Regular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
     body {
       background-color: #fff7fa;
       color: #271528;
@@ -165,12 +173,12 @@
         <span class="material-symbols-outlined">mail</span>
       </a>
       <!-- Second in RTL = left side -->
-      <a href="#hero" class="flex items-center gap-2 text-primary shrink-0" dir="ltr" style="font-family: 'Comic Sans MS', 'Comic Sans', cursive; font-style: italic;">
+      <a href="#hero" class="flex items-center gap-2 text-primary shrink-0 font-brand" dir="ltr">
         <div class="text-left leading-tight">
           <span class="font-semibold text-lg md:text-xl block">Makeup Therapy <span aria-hidden="true">▪</span> איפור תרפי</span>
           <span class="text-xs md:text-sm text-on-surface-variant hidden sm:block" dir="rtl">המקום שבו המברשת פוגשת את הנפש</span>
         </div>
-        <span class="text-xl" aria-hidden="true" style="font-style: normal;">💄</span>
+        <span class="text-xl" aria-hidden="true">💄</span>
       </a>
     </div>
   </header>
@@ -185,7 +193,7 @@
       </div>
       <div class="relative z-20 w-full px-5 md:px-16 max-w-[1200px] mx-auto py-16 md:py-24">
         <div class="max-w-2xl glass-card rounded-2xl p-8 md:p-10 shadow-soft">
-          <p class="text-secondary font-medium text-sm md:text-base mb-3" style="font-family: 'Comic Sans MS', 'Comic Sans', cursive; font-style: italic;">המקום שבו המברשת פוגשת את הנפש</p>
+          <p class="text-secondary font-brand font-medium text-sm md:text-base mb-3">המקום שבו המברשת פוגשת את הנפש</p>
           <h1 class="font-display font-semibold text-2xl md:text-4xl text-primary leading-tight mb-4">
             כמה פעמים הסתכלת במראה בבוקר והתמקדת רק במה ש"לא בסדר"?
           </h1>
