@@ -425,10 +425,17 @@
           result.className = 'text-sm text-center min-h-[1.25rem] text-on-surface-variant';
           submitBtn.disabled = true;
 
-          const payload = Object.fromEntries(new FormData(form));
-          payload.name = (nameInput.value || '').trim();
-          payload.phone = (phoneInput.value || '').trim();
-          payload.email = (emailInput.value || '').trim();
+          // Explicit payload — avoids honeypot/FormData quirks that can silently block mail
+          const payload = {
+            access_key: '153f8648-bace-41da-855a-8ae4b031c231',
+            subject: 'New lead from Makeup Therapy website',
+            from_name: 'Makeup Therapy',
+            name: (nameInput.value || '').trim(),
+            phone: (phoneInput.value || '').trim(),
+            email: (emailInput.value || '').trim(),
+            workshop: workshopSelect.value,
+            botcheck: false,
+          };
 
           try {
             const response = await fetch('https://api.web3forms.com/submit', {
@@ -440,7 +447,7 @@
               body: JSON.stringify(payload),
             });
             const data = await response.json();
-            if (response.ok) {
+            if (response.ok && data.success) {
               result.textContent = 'תודה! קיבלנו את הפרטים ונחזור אלייך בוואטסאפ בהקדם.';
               result.className = 'text-sm text-center min-h-[1.25rem] text-primary font-medium';
               form.reset();
