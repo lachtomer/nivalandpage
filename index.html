@@ -328,19 +328,23 @@
               <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
               <div>
                 <label class="block font-semibold text-sm text-on-surface mb-2" for="name">שם מלא</label>
-                <input class="w-full bg-surface-container border border-outline-variant/50 focus:border-primary focus:ring-primary/20 rounded-lg p-3" id="name" name="name" type="text" placeholder="שם מלא" required>
+                <input class="w-full bg-surface-container border border-outline-variant/50 focus:border-primary focus:ring-primary/20 rounded-lg p-3" id="name" name="name" type="text" placeholder="שם מלא" required minlength="2" autocomplete="name">
               </div>
               <div>
                 <label class="block font-semibold text-sm text-on-surface mb-2" for="phone">מספר טלפון (וואטסאפ)</label>
-                <input class="w-full bg-surface-container border border-outline-variant/50 focus:border-primary focus:ring-primary/20 rounded-lg p-3" id="phone" name="phone" type="tel" placeholder="050-0000000" required>
+                <input class="w-full bg-surface-container border border-outline-variant/50 focus:border-primary focus:ring-primary/20 rounded-lg p-3" id="phone" name="phone" type="tel" placeholder="050-0000000" required autocomplete="tel" inputmode="tel" pattern="[\d\-\s()]{9,15}" title="נא להזין מספר טלפון תקין">
+              </div>
+              <div>
+                <label class="block font-semibold text-sm text-on-surface mb-2" for="email">אימייל</label>
+                <input class="w-full bg-surface-container border border-outline-variant/50 focus:border-primary focus:ring-primary/20 rounded-lg p-3" id="email" name="email" type="email" placeholder="name@example.com" required autocomplete="email" inputmode="email" dir="ltr">
               </div>
               <div>
                 <label class="block font-semibold text-sm text-on-surface mb-2" for="workshop">איזה מסלול הכי מעניין אותך?</label>
                 <select class="w-full bg-surface-container border border-outline-variant/50 focus:border-primary focus:ring-primary/20 rounded-lg p-3" id="workshop" name="workshop" required>
-                  <option value="" disabled selected>בחרי מסלול</option>
-                  <option value="סדנה פרטית לאחת">סדנה פרטית לאחת</option>
-                  <option value="סדנה זוגית (אם ובת)">סדנה זוגית (אם ובת)</option>
-                  <option value="סדנה קבוצתית">סדנה קבוצתית</option>
+                  <option value="" disabled selected hidden>בחרי מסלול</option>
+                  <option value="סדנה פרטית לאחת">1. סדנה פרטית לאחת</option>
+                  <option value="סדנה זוגית (אם ובת)">2. סדנה זוגית (אם ובת)</option>
+                  <option value="סדנה קבוצתית">3. סדנה קבוצתית</option>
                 </select>
               </div>
               <button id="contact-submit" class="w-full bg-primary text-on-primary py-4 rounded-lg font-display font-semibold active:scale-95 transition-transform shadow-soft mt-2" type="submit">
@@ -375,11 +379,56 @@
       const result = document.getElementById('contact-result');
       const submitBtn = document.getElementById('contact-submit');
       if (form && result && submitBtn) {
+        const nameInput = form.querySelector('#name');
+        const phoneInput = form.querySelector('#phone');
+        const emailInput = form.querySelector('#email');
+        const workshopSelect = form.querySelector('#workshop');
+
+        const validateContactForm = () => {
+          const name = (nameInput?.value || '').trim();
+          const phone = (phoneInput?.value || '').trim();
+          const email = (emailInput?.value || '').trim();
+          const workshop = workshopSelect?.value || '';
+
+          if (!name) {
+            result.textContent = 'נא למלא שם מלא.';
+            result.className = 'text-sm text-center min-h-[1.25rem] text-red-700';
+            nameInput?.focus();
+            return false;
+          }
+          if (!phone || phone.replace(/\D/g, '').length < 9) {
+            result.textContent = 'נא למלא מספר טלפון תקין.';
+            result.className = 'text-sm text-center min-h-[1.25rem] text-red-700';
+            phoneInput?.focus();
+            return false;
+          }
+          if (!email || !emailInput.checkValidity()) {
+            result.textContent = 'נא למלא כתובת אימייל תקינה.';
+            result.className = 'text-sm text-center min-h-[1.25rem] text-red-700';
+            emailInput?.focus();
+            return false;
+          }
+          if (!workshop) {
+            result.textContent = 'נא לבחור מסלול (1, 2 או 3).';
+            result.className = 'text-sm text-center min-h-[1.25rem] text-red-700';
+            workshopSelect?.focus();
+            return false;
+          }
+          return true;
+        };
+
         form.addEventListener('submit', async (e) => {
           e.preventDefault();
+          if (!validateContactForm()) return;
+
           result.textContent = 'שולחת…';
           result.className = 'text-sm text-center min-h-[1.25rem] text-on-surface-variant';
           submitBtn.disabled = true;
+
+          const payload = Object.fromEntries(new FormData(form));
+          payload.name = (nameInput.value || '').trim();
+          payload.phone = (phoneInput.value || '').trim();
+          payload.email = (emailInput.value || '').trim();
 
           try {
             const response = await fetch('https://api.web3forms.com/submit', {
@@ -388,7 +437,7 @@
                 'Content-Type': 'application/json',
                 Accept: 'application/json',
               },
-              body: JSON.stringify(Object.fromEntries(new FormData(form))),
+              body: JSON.stringify(payload),
             });
             const data = await response.json();
             if (response.ok) {
